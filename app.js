@@ -4,7 +4,7 @@ const path = require("path");
 
 const App = express();
 App.set("view engine", "ejs");
-App.use(express.static('public'))
+App.use('/uploads',express.static('uploads'));
 
 const storage = multer.diskStorage({
     destination: function(req ,file, cb) {
@@ -25,7 +25,7 @@ App.post('/upload', uploads.single('myfile'), (req, res) => {
   if (!req.file) {
     return res.send("Please upload a file");
   }
-  res.send(`file uploaded successfully: <b>${req.file.filename}</b>`);
+ res.render("success", {image: req.file.filename});
 });
 
 App.listen(3000, () => console.log(`http://localhost:3000`));
