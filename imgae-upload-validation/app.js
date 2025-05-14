@@ -4,19 +4,19 @@ const multer = require("multer");
 const path = require("path");
 
 const App = express();
-App.use("view engine", "ejs"); 
-App.use(express.static("uploads")); 
+App.set("view engine", "ejs"); 
+App.use(express.static("upload")); 
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, "uploads");
+        cb(null, "upload");
     },
     filename: function(req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 
-const filterImage = function(req, file, cb) {
+const fileFilter = function(req, file, cb) {
     const allowedType = /jpeg|jpg|png/;
     const extname = allowedType.test(path.extname(file.originalname).toLowerCase());
     const mimetype = allowedType.test(file.mimetype);
