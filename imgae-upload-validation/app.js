@@ -18,18 +18,18 @@ const storage = multer.diskStorage({
 
 const fileFilter = function(req, file, cb) {
     const allowedType = /jpeg|jpg|png/;
-    const extname = allowedType.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = allowedType.test(file.mimetype);
+    const extname = allowedType.test(path.extname(file.originalname).toLowerCase()); // checks the file content
+    const mimetype = allowedType.test(file.mimetype); // tells the server what kind of image file contain
 
     if (mimetype && extname) {
-        return cb(null, true);
+        return cb(null, true); // allows to upload file
     } else {
         cb(null, Error("Only .jpg, .jpeg, .png images are allowed"))
     }
 }
 
 const upload = multer({
-    storage: storage,
+    storage: storage, // where and how to store uploaded file
     limits: {fileSize: 2 * 1024 * 1024},
     fileFilter: fileFilter
 });
