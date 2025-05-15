@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Uploader</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Image</h2>
+    <ul>
+        <% image.forEach(img => { %>
+          <li>
+            <img src="/uploads/<%= img.file_name %>" width="100"> <br>
+            <a href="/uploads/<%= img.file_name %>">Download</a>
+            <a href="/delete/<%= img.id %>" onclick="return confirm('Delete this image')">Delete</a>
+          </li>
+         <% }) %>
+    </ul>
+</body>
+</html>
