@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 const storage = multer.diskStorage({
-    destination: 'public/uploads',
+    destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
     }
