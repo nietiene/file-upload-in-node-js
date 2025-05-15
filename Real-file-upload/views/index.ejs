@@ -17,7 +17,7 @@
         <% image.forEach(img => { %>
           <li>
             <img src="/uploads/<%= img.file_name %>" width="100"> <br>
-            <a href="/uploads/<%= img.file_name %>">Download</a>
+            <a href="/download/<%= img.file_name %>">Download</a>
             <a href="/delete/<%= img.id %>" onclick="return confirm('Delete this image')">Delete</a>
           </li>
          <% }) %>
