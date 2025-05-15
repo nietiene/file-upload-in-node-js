@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 //upload image
 app.post('/upload', upload.single('image'), (req, res) => {
-    const filename = req.file.filename;
+    const filename = req.file.filename; // contain  name of uploaded file
     db.query("INSERT INTO file (file_name) VALUES(?)", [filename], (err) => {
         if (err) throw err;
         res.redirect('/');
@@ -58,4 +58,5 @@ app.get('/download/:filename', (req, res) => {
     res.download(filePath);
 });
 
-app.listen(3000, () => console.log(`http://localhost:3000`));
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
