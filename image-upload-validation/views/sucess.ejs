@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Image</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-    <h2>File Uploaded Successfully</h2>
-    <p>Filename: <strong><%= message %></strong></p>
-    <img src="/<%= message %>" alt="uploaded image" width="300"> <br><br>
-    <a href="/">Upload Another</a>
+<body class="min-h-screen bg-green-100 flex flex-col items-center justify-center p-4">
+  <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center">
+      <h2 class="text-2xl font-bold text-blue-600 text-center mb-4">File Uploaded Successfully</h2>
+      <p class="text-gray-700 mb-2">
+        Filename: 
+        <strong class="text-green-600"><%= message %></strong></p>
+      <img src="/<%= message %>" alt="uploaded image" width="300"
+      class="mt-4 mb-4 max-auto rounded border border-gray-300 shadow"> <br><br>
+      <a href="/"
+      class="inline-block bg-green-500 hover:bg-green-600">Upload Another</a> 
+  </div>
 </body>
 </html>
