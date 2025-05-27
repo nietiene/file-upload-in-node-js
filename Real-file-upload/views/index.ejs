@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Uploader</title>
+      <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Upload Image</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" required>
-        <button type="submit">Upload</button>
-    </form>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    <div class="w-full max-w-xl bg-white rounded-lg shadow-lg p-6">
+       <h1>Upload Image</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+           <input type="file" name="image" required>
+           <button type="submit">Upload</button>
+       </form>
 
+    </div>
+  
     <h2>Uploaded Image</h2>
     <ul>
         <% image.forEach(img => { %>
